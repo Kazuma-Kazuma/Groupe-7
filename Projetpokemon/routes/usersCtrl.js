@@ -1,5 +1,5 @@
 var bcrypt = require('bcrypt');
-var jwt = require('jsonwebtoken');
+var jwtUtils = require('../utils/jwt.utils');
 var models = require('../models');
 
 
@@ -50,6 +50,34 @@ module.exports = {
 
     },
     login: function(req, res) {
+        var email = req.body.email;
+        var password = req.body.password;
 
+        if (email == null || password == null) {
+            return res.status(400).json({ 'error': 'missing parameters' });
+        }
+
+        models.User.findOne({
+            where: { email: email }
+        })
+        .then(function(userFound) {
+            if (userFound) {
+                bcrypt.compare(password, userFound.password, function(errBycrypt, resBycrypt) {
+                    if(resBycrypt) {
+                        return res.status(200).json({
+                            'userId': userFound.id,
+                            'token': jwtUtils.generateTokerForUser(userFound)
+                        });
+                    } else {
+                        return res.status(403).json({ 'error': 'invalid password' });
+                    }
+                });
+            } else {
+                return res.status(404).json({ 'error': 'user not exist in DB' });
+            }
+        })
+        .catch(function(err) {
+            return res.status(500).json({ 'error': 'unable to verify user' });
+        });
     }
 }
