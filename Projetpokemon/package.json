@@ -1,0 +1,33 @@
+{
+  "name": "groupe-7",
+  "version": "1.0.0",
+  "description": "Serveur HTTP pour API RESTFUL",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kazuma-Kazuma/Groupe-7.git"
+  },
+  "keywords": [
+    "server",
+    "http",
+    "api",
+    "restful"
+  ],
+  "author": "Benoit Chaperon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kazuma-Kazuma/Groupe-7/issues"
+  },
+  "homepage": "https://github.com/Kazuma-Kazuma/Groupe-7#readme",
+  "dependencies": {
+    "mysql": "^2.18.1",
+    "pg": "^8.8.0",
+    "sequelize": "^3.30.4"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.5.2"
+  }
+}
