@@ -1,30 +1,6 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Pokemon extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
-      models.Pokemon.hasMany(models.Team);
-      models.Pokemon.belongsTo(models.Move, {
-        foreignKey:{
-          allowNull: false
-        }
-      });
-      models.Pokemon.belongsTo(models.Item, {
-        foreignKey:{
-          allowNull: false
-        }
-      });
-    }
-  }
-  Pokemon.init({
+  var Pokemon = sequelize.define('Pokemon', {
     idMOVES: DataTypes.INTEGER,
     idITEMS: DataTypes.INTEGER,
     nameITEMS: DataTypes.STRING,
@@ -38,8 +14,21 @@ module.exports = (sequelize, DataTypes) => {
     Spatk: DataTypes.INTEGER,
     Hp: DataTypes.INTEGER
   }, {
-    sequelize,
-    modelName: 'Pokemon',
+    classMethods: {
+      associate: function(models) {
+        models.Pokemon.hasMany(models.Team);
+        models.Pokemon.belongsTo(models.Move, {
+          foreignKey:{
+            allowNull: false
+          }
+        });
+        models.Pokemon.belongsTo(models.Item, {
+          foreignKey:{
+            allowNull: false
+          }
+        });
+      }
+    }
   });
   return Pokemon;
 };

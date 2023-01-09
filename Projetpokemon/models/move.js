@@ -1,20 +1,6 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Move extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
-      models.Move.hasMany(models.Pokemon);
-    }
-  }
-  Move.init({
+  var Move = sequelize.define('Move', {
     name: DataTypes.STRING,
     Movetype: DataTypes.STRING,
     PP: DataTypes.INTEGER,
@@ -22,8 +8,11 @@ module.exports = (sequelize, DataTypes) => {
     Effect: DataTypes.STRING,
     Accuracy: DataTypes.INTEGER
   }, {
-    sequelize,
-    modelName: 'Move',
+    classMethods: {
+      associate: function(models) {
+        models.Move.hasMany(models.Pokemon);
+      }
+    }
   });
   return Move;
 };
