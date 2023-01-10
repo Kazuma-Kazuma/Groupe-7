@@ -6,6 +6,11 @@ module.exports = (sequelize, DataTypes) => {
     Name: DataTypes.STRING,
     description: DataTypes.STRING,
     pokemons: DataTypes.STRING,
+    pokemons2: DataTypes.STRING,
+    pokemons3: DataTypes.STRING,
+    pokemons4: DataTypes.STRING,
+    pokemons5: DataTypes.STRING,
+    pokemons6: DataTypes.STRING,
     comments: DataTypes.STRING
   }, {
     classMethods: {

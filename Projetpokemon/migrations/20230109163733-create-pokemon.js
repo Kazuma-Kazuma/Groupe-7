@@ -36,7 +36,19 @@ module.exports = {
       Type2: {
         type: Sequelize.STRING
       },
-      Ability: {
+      Ability1: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      Ability2: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      Ability3: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      Ability4: {
         allowNull: false,
         type: Sequelize.STRING
       },

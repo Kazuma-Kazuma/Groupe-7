@@ -36,6 +36,26 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
+      pokemons2: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      pokemons3: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      pokemons4: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      pokemons5: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      pokemons6: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
       comments: {
         allowNull: false,
         type: Sequelize.STRING
