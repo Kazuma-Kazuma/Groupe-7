@@ -52,6 +52,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
+      Talent: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
       Speed: {
         allowNull: false,
         type: Sequelize.INTEGER

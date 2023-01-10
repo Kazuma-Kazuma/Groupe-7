@@ -3,7 +3,6 @@ module.exports = (sequelize, DataTypes) => {
   var Pokemon = sequelize.define('Pokemon', {
     idMOVES: DataTypes.INTEGER,
     idITEMS: DataTypes.INTEGER,
-    nameITEMS: DataTypes.STRING,
     Name: DataTypes.STRING,
     Type1: DataTypes.STRING,
     Type2: DataTypes.STRING,
@@ -11,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     Ability2: DataTypes.STRING,
     Ability3: DataTypes.STRING,
     Ability4: DataTypes.STRING,
+    Talent: DataTypes.STRING,
     Speed: DataTypes.INTEGER,
     Defense: DataTypes.INTEGER,
     Attack: DataTypes.INTEGER,
