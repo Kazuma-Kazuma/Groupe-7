@@ -1,7 +1,7 @@
 const express = require('express');
 const jwt = require('express-jwt');
 const app = express();
-const Item = require('/models/item');
+const Move = require('/models/move');
 
 const handleError = (err, req, res, next) => {
     if (err.name === 'UnauthorizedError') {
@@ -15,73 +15,73 @@ const checkJWT = jwt({ secret: 'BeeB' }).unless({ path: ['/Users/login'] });
 app.use(checkJWT);
 app.use(handleError);
 
-//Get all items
+//Get all moves
 app.get('/', async (req, res) => {
     try {
-        const items = await Item.findAll();
-        res.json(items);
+        const moves = await Move.findAll();
+        res.json(moves);
     } catch (err) {
         handleError(err, req, res);
     }
 });
 
-// Get one item by id
+// Get one move by id
 app.get('/:id', async (req, res) => {
     try {
-        const item = await Item.findById(req.params.id);
-        if (!item) {
-            res.status(404).json({ message: 'Item not found' });
+        const move = await Move.findById(req.params.id);
+        if (!move) {
+            res.status(404).json({ message: 'Move not found' });
         } else {
-            res.json(item);
+            res.json(move);
         }
     } catch (err) {
         handleError(err, req, res);
     }
 });
 
-// Create an item
+// Create a move
 app.post('/', async (req, res) => {
     try {
-        const item = await Item.create({
+        const move = await Move.create({
             name: req.body.name,
             effect: req.body.effect
         });
-        res.status(201).json(item);
+        res.status(201).json(move);
     } catch (err) {
         handleError(err, req, res);
     }
 });
 
-// Update an item
+// Update an move
 app.put('/:id', async (req, res) => {
     if (req.user.role !== 'isAdmin') {
         return res.status(401).json({ message: 'Unauthorized' });
     }
     try {
-        const item = Item.findById(req.params.id);
-        if (!item) {
-            res.status(404).json({ message: 'Item not found' });
+        const move = Move.findById(req.params.id);
+        if (!move) {
+            res.status(404).json({ message: 'Move not found' });
         } else {
-            await item.update({
+            await move.update({
                 name: req.body.name,
                 effect: req.body.effect
             });
-            res.json(item);
+            res.json(move);
         }
     } catch (err) {
         handleError(err, req, res);
     }
 });
 
-// Delete an item
+// Delete an move
 app.delete('/:id', async (req, res) => {
     try {
-        const item = await Item.findById(req.params.id);
-        if (!item) {
-            res.status(404).json({ message: 'Item not found' });
+        const move = await Move.findById(req.params.id);
+        if (!move) {
+            res.status(404).json({ message: 'Move not found' });
         } else {
-            await item.destroy();
-            res.status(204).json({ message: 'Item deleted' });
+            await move.destroy();
+            res.status(204).json({ message: 'Move deleted' });
         }
     } catch (err) {
         handleError(err, req, res);
