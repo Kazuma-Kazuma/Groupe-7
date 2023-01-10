@@ -2,6 +2,9 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var apiRouter = require('./apiRouter').router;
 
+//routes
+var item_route = require('./routes/ItemCtrl');
+
 const pokemon_route = require("./routes/pokemonCtrl");
 
 var server = express();
@@ -15,7 +18,6 @@ server.get('/', function(req, res) {
 });
 
 server.use('/api/', apiRouter);
-server.use('/api/', pokemon_route);
 
 server.listen(8080, function() {
     console.log('Server is running...');
