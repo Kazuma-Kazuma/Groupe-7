@@ -18,6 +18,8 @@ server.get('/', function(req, res) {
 });
 
 server.use('/api/', apiRouter);
+server.use('/item', item_route);
+server.use('/pokemon', pokemon_route);
 
 server.listen(8080, function() {
     console.log('Server is running...');
