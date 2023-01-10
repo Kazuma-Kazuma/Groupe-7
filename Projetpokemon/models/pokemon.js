@@ -7,6 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     Name: DataTypes.STRING,
     Type1: DataTypes.STRING,
     Type2: DataTypes.STRING,
+    Ability: DataTypes.STRING,
     Speed: DataTypes.INTEGER,
     Defense: DataTypes.INTEGER,
     Attack: DataTypes.INTEGER,
